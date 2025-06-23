@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { 
+  Box, 
+  Button, 
+  Input, 
+  VStack, 
+  Heading, 
+  Text
+} from '@chakra-ui/react';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -16,47 +24,66 @@ const Register = () => {
   };
 
   return (
-    <div style={{ maxWidth: 400, margin: '50px auto', padding: 20, border: '1px solid #ddd', borderRadius: 8 }}>
-      <h2>Register</h2>
+    <Box 
+      maxW="400px" 
+      mx="auto" 
+      mt="50px" 
+      p={5} 
+      border="1px solid" 
+      borderColor="gray.200" 
+      borderRadius="md"
+      shadow="sm"
+    >
+      <Heading as="h2" size="lg" mb={6} textAlign="center">
+        Register
+      </Heading>
+      
       <form onSubmit={handleRegister}>
-        <div style={{ marginBottom: 12 }}>
-          <label>Name:</label>
-          <input
-            type="text"
-            value={name}
-            onChange={e => setName(e.target.value)}
-            required
-            style={{ width: '100%', padding: 8 }}
-            placeholder="Your full name"
-          />
-        </div>
-        <div style={{ marginBottom: 12 }}>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            required
-            style={{ width: '100%', padding: 8 }}
-            placeholder="you@example.com"
-          />
-        </div>
-        <div style={{ marginBottom: 12 }}>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            required
-            style={{ width: '100%', padding: 8 }}
-            placeholder="At least 6 characters"
-          />
-        </div>
-        <button type="submit" style={{ padding: '8px 16px' }}>
-          Register
-        </button>
+        <VStack gap={4} align="stretch">
+          <Box>
+            <Text mb={2} fontWeight="medium">Name:</Text>
+            <Input
+              type="text"
+              value={name}
+              onChange={e => setName(e.target.value)}
+              placeholder="Your full name"
+              required
+            />
+          </Box>
+
+          <Box>
+            <Text mb={2} fontWeight="medium">Email:</Text>
+            <Input
+              type="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              placeholder="you@example.com"
+              required
+            />
+          </Box>
+
+          <Box>
+            <Text mb={2} fontWeight="medium">Password:</Text>
+            <Input
+              type="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              placeholder="At least 6 characters"
+              required
+            />
+          </Box>
+
+          <Button 
+            type="submit" 
+            colorScheme="blue" 
+            size="lg"
+            mt={4}
+          >
+            Register
+          </Button>
+        </VStack>
       </form>
-    </div>
+    </Box>
   );
 };
 

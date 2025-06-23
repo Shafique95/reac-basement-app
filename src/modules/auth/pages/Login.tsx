@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import {Link} from 'react-router-dom'
+import { Box, Button, Text, Heading, VStack } from '@chakra-ui/react';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -8,23 +8,43 @@ const Login = () => {
     localStorage.setItem('token', 'demo-token');
     navigate('/dashboard', { replace: true });
   };
-    const goToRegister = () => {
+
+  const goToRegister = () => {
     navigate('/register', { replace: true });
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-    
-      <button onClick={handleLogin}>Login</button>
-      {/* <p>If you are not rigistered Kindl register Here <Link to="/register">Register!</Link></p> */}
-        <p>
-        Don't have an account?{' '}
-        <button type="button" onClick={goToRegister} style={{ color: 'blue', textDecoration: 'underline', background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}>
-          Register!
-        </button>
-      </p>
-    </div>
+    <Box p={8} maxW="md" mx="auto" mt={10}>
+              <VStack gap={6} align="center">
+        <Heading as="h2" size="lg" textAlign="center">
+          Login
+        </Heading>
+        
+        <Button 
+          colorScheme="blue" 
+          size="lg" 
+          onClick={handleLogin}
+          width="full"
+        >
+          Login
+        </Button>
+        
+        <Text textAlign="center">
+          Don't have an account?{' '}
+          <Button
+            variant="plain"
+            colorScheme="blue"
+            onClick={goToRegister}
+            p={0}
+            h="auto"
+            fontWeight="normal"
+            textDecoration="underline"
+          >
+            Register!
+          </Button>
+        </Text>
+      </VStack>
+    </Box>
   );
 };
 
