@@ -10,9 +10,9 @@ const AppRoutes = () => {
   const routes = [
   {path:"/",element:<Navigate to="/login" replace/>},
   ...authRoutes,
-    ...dashboardRoutes,
-    ...employeeRoutes,
-    { path: '*', element: <NotFound /> },
+  ...dashboardRoutes,
+  ...employeeRoutes,
+  { path: '*', element: <NotFound /> },
   ];
   return useRoutes(routes);
 };
